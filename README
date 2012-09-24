@@ -1,0 +1,18 @@
+pauls-dice is a python script that simulates various dice rolling
+
+Example usage: 
+
+2d20 -- rolls 2 d20s, shows each roll and the total. 
+    You can change these numbers.
+    Omitting the number before the d defaults to 1.
+
+7k4  -- rolls 7 d10s, shows the individual rolls, then sorts them and keeps the top 4.
+    It also takes care of "Exploding Dice"
+
+test d6 -- you can also do test d10, test 2d6, or change those numbers as you wish. 
+    This command rolls the dice many times and shows how many 1s, 2s, 3s, etc. came up.
+
+h or help -- displays the help menu
+
+q or quit or exit -- exits the program
+

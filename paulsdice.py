@@ -3,6 +3,7 @@
 #
 # Paul Kaefer
 # Created: 3/6/2012
+# Modified: 10/28/2012 to enable the user to draw a card
 #
 # Paul's Dice: a command-line, text-based dice-rolling utility. That's right, utility.
 #
@@ -15,7 +16,7 @@ import random       # for the dice and coins; for all general randomness *salute
 
 # Program version #
 
-about_string = "Paul's Dice, Version 1.0, Created 2012"
+about_string = "Paul's Dice, Version 1.1, Created 2012"
 bar = "============================================================"
 
 print ""
@@ -112,6 +113,13 @@ def test_dice(value, number):
         array[roll] = array[roll] + 1
     for i in range(roll_min, roll_max+1):
         print repr(i)+"s: "+repr(array[i])
+
+def draw():
+    suits = ["hearts", "spades", "diamonds", "clubs"]
+    cards = ["ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"]
+    suit = suits[random.randrange(4)]
+    card = cards[random.randrange(13)]
+    print "You drew the "+card+" of "+suit+"."
 
 # Program loop -- loops until stopped #
 
@@ -231,6 +239,8 @@ while ( stop == 0 ):
                 print "\nError: y > x\n"
             else:
                 xky(x, y)
+    elif (command[0:4]=="draw") or (command[0:4]=="card"):
+        draw()
     else:
         splitarg = command.split(' ')
         nargs = len(splitarg)
@@ -291,10 +301,9 @@ while ( stop == 0 ):
                         print ""
                         print bar
                     print ""
-    # card? -- would have to do before ELSE{check for k, d}
+    # more than one card?
     # quote?
     # why?
     # fortune?
     # random/random roll
-
 

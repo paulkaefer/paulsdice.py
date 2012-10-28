@@ -135,7 +135,7 @@ while ( stop == 0 ):
         print ""
         print about_string
         print ""
-    elif (command=="help") or (command=="h") or (command=="H"):
+    elif (command=="help") or (command=="h") or (command=="H") or (command[0:4]=="dice"):
         print ""
         print "Some available commands:\n"
         print ""

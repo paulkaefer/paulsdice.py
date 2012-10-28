@@ -1,5 +1,5 @@
 #
-# pauls-dice.py
+# paulsdice.py
 #
 # Paul Kaefer
 # Created: 3/6/2012

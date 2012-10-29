@@ -301,6 +301,9 @@ while ( stop == 0 ):
                         print ""
                         print bar
                     print ""
+    #
+    # Ideas for future developments:
+    #
     # more than one card?
     # quote?
     # why?

@@ -4,6 +4,7 @@
 # Paul Kaefer
 # Created: 3/6/2012
 # Modified: 10/28/2012 to enable the user to draw a card
+# Modified: 11/26/2012 to enable the "die" command to roll 1d6
 #
 # Paul's Dice: a command-line, text-based dice-rolling utility. That's right, utility.
 #
@@ -16,7 +17,7 @@ import random       # for the dice and coins; for all general randomness *salute
 
 # Program version #
 
-about_string = "Paul's Dice, Version 1.1, Created 2012"
+about_string = "Paul's Dice, Version 1.2, Created 2012"
 bar = "============================================================"
 
 print ""
@@ -192,14 +193,22 @@ while ( stop == 0 ):
             prompt = ""
             for i in range(1, nargs):
                 prompt += splitarg[i]+" "
-    elif (command == "roll"):
+    elif (command == "roll") or (command=="die"):
         print "\nYou rolled a d6 and got a "+repr(roll(6, 1))+".\n"
     elif (command[0:4]=="roll"):
-        splitarg = command.split(' ')
+        # if the user enters "roll " or "roll 3" or something:
+        if (len(command)<=5):
+            print "\nYou rolled a d6 and got a "+repr(roll(6, 1))+".\n"
+        #splitarg = command.split(' ')
         # default case: no argument given (just "roll")
-        if (len(splitarg) == 1):
-            nargs = 1
+        elif (len(command)==6):
+            n = int(command[5])
+            print "\nYou rolled "+repr(n)+"d6 and got a "+repr(roll(6, n))+".\n"
+        elif (len(command)==7):
+            n = int(command[5:7])
+            print "\nYou rolled "+repr(n)+"d6 and got a "+repr(roll(6, n))+".\n"
         else:
+            splitarg = command.split(' ')
             splitarg = splitarg[1].split('d')
             if (splitarg[0] == ''):
                 n = 1

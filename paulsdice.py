@@ -123,17 +123,6 @@ def draw():
     card = cards[random.randrange(13)]
     print "You drew the "+card+" of "+suit+"."
 
-# Takes a string, and returns the lowercase version of that string
-def toLowerCase(string):
-    newString = ""
-    for character in string:
-        numericValue = ord(character)
-        # A: 65, Z: 90; a: 97, z: 122
-        if (numericValue > 64) and (numericValue < 91):
-            character = chr(ord(character) + 32)
-        newString += character
-    return newString
-    
 # Program loop -- loops until stopped #
 
 stop = 0
@@ -141,7 +130,7 @@ prompt = "> " # default prompt
 
 while ( stop == 0 ):
     command = raw_input(prompt)
-    command = toLowerCase(command)
+    command = command.lower()
     #print command
     if (command=="quit") or (command=="exit") or (command=="Q") or (command=="q") or (command=="stop"):
         stop = 1

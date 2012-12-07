@@ -5,6 +5,7 @@
 # Created: 3/6/2012
 # Modified: 10/28/2012 to enable the user to draw a card
 # Modified: 11/26/2012 to enable the "die" command to roll 1d6
+# Modified: 12/7/2012 to enable handling of mixed-case input
 #
 # Paul's Dice: a command-line, text-based dice-rolling utility. That's right, utility.
 #
@@ -17,7 +18,7 @@ import random       # for the dice and coins; for all general randomness *salute
 
 # Program version #
 
-about_string = "Paul's Dice, Version 1.2, Created 2012"
+about_string = "Paul's Dice, Version 1.3, Created 2012"
 bar = "============================================================"
 
 print ""
@@ -122,6 +123,17 @@ def draw():
     card = cards[random.randrange(13)]
     print "You drew the "+card+" of "+suit+"."
 
+# Takes a string, and returns the lowercase version of that string
+def toLowerCase(string):
+    newString = ""
+    for character in string:
+        numericValue = ord(character)
+        # A: 65, Z: 90; a: 97, z: 122
+        if (numericValue > 64) and (numericValue < 91):
+            character = chr(ord(character) + 32)
+        newString += character
+    return newString
+    
 # Program loop -- loops until stopped #
 
 stop = 0
@@ -129,6 +141,7 @@ prompt = "> " # default prompt
 
 while ( stop == 0 ):
     command = raw_input(prompt)
+    command = toLowerCase(command)
     #print command
     if (command=="quit") or (command=="exit") or (command=="Q") or (command=="q") or (command=="stop"):
         stop = 1

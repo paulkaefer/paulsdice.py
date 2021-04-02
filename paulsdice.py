@@ -21,9 +21,9 @@ import random       # for the dice and coins; for all general randomness *salute
 about_string = "Paul's Dice, Version 1.3, Created 2012"
 bar = "============================================================"
 
-print ""
-print about_string
-print ""
+print("")
+print(about_string)
+print("")
 
 # Function Declarations #
 
@@ -39,28 +39,28 @@ def xky(x, y):
         rolls[i] = 0
     for i in range(0,x):
         rolls[i] = roll(10, 1)
-    print ""
-    print bar
-    print ""
-    print "Raw rolls:        "+repr(rolls)
-    print ""
-    print "Raw sum: "+repr(sum(rolls))
+    print("")
+    print(bar)
+    print("")
+    print("Raw rolls:        " + repr(rolls))
+    print("")
+    print("Raw sum: " + repr(sum(rolls)))
     rolls = sorted(rolls, reverse=True)
-    print ""
-    print "Sorted rolls:     "+repr(rolls)
-    print ""
+    print("")
+    print("Sorted rolls:     " + repr(rolls))
+    print("")
     exploding_dice = 0
     total = 0
     for i in range(0,y):
         if ( rolls[i] == 10 ):
             exploding_dice += 1
             # Explode!
-            print "Exploding die number "+repr(exploding_dice)
-            keep_going = True 
+            print("Exploding die number " + repr(exploding_dice))
+            keep_going = True
             running_sum = 10
             while ( keep_going ):
                 newroll = roll(10, 1)
-                print " next: "+repr(newroll)
+                print(" next: " + repr(newroll))
                 running_sum += newroll
                 if ( newroll != 10 ):
                     keep_going = False
@@ -68,19 +68,19 @@ def xky(x, y):
             total += running_sum
         else: # not a 10
             total += rolls[i]
-    print "\n"+repr(x)+"k"+repr(y)+" sum: "+repr(total)
-    print ""
-    print bar
-    print ""
+    print("\n" + repr(x) + "k" + repr(y) + " sum: " + repr(total))
+    print("")
+    print(bar)
+    print("")
 
 def flip_coin(number):
     flip=0
     for i in range(0,number):
         flip=random.randrange(2)
         if (flip==1):
-            print "You flipped a heads"
+            print("You flipped heads.")
         elif (flip==0):
-            print "You flipped a tails"
+            print("You flipped tails.")
 
 def test_coin():
     heads=0
@@ -92,12 +92,12 @@ def test_coin():
             tails+=1
         elif (flip==1):
             heads+=1
-    print " "
-    print "Coin toss randomness test results:"
-    print " "
-    print "Heads: "+repr(heads)
-    print "Tails: "+repr(tails)
-    print " "
+    print(" ")
+    print("Coin toss randomness test results:")
+    print(" ")
+    print("Heads: " + repr(heads))
+    print("Tails: " + repr(tails))
+    print(" ")
 
 def test_dice(value, number):
     roll_max = value*number
@@ -114,14 +114,14 @@ def test_dice(value, number):
             roll+=random.randrange(value)+1
         array[roll] = array[roll] + 1
     for i in range(roll_min, roll_max+1):
-        print repr(i)+"s: "+repr(array[i])
+        print(repr(i) + "s: " + repr(array[i]))
 
 def draw():
     suits = ["hearts", "spades", "diamonds", "clubs"]
     cards = ["ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"]
     suit = suits[random.randrange(4)]
     card = cards[random.randrange(13)]
-    print "You drew the "+card+" of "+suit+"."
+    print("You drew the " + card + " of " + suit + ".")
 
 # Program loop -- loops until stopped #
 
@@ -129,63 +129,63 @@ stop = 0
 prompt = "> " # default prompt
 
 while ( stop == 0 ):
-    command = raw_input(prompt)
+    command = input(prompt)
     command = command.lower()
-    #print command
+    #print(command
     if (command=="quit") or (command=="exit") or (command=="Q") or (command=="q") or (command=="stop"):
         stop = 1
     elif (command=="about") or (command=="info"):
-        print ""
-        print about_string
-        print ""
+        print("")
+        print(about_string)
+        print("")
     elif (command=="help") or (command=="h") or (command=="H") or (command[0:4]=="dice"):
-        print ""
-        print "Some available commands:\n"
-        print ""
-        print "  ndx: roll n dXs"
-        print "       example: 1d6 or 2d20"
-        print "       d6 rolls 1d6"
-        print "       n and x may have any postive integer value"
-        print ""
-        print "  xky: roll x and keep y"
-        print "       example: 5k3"
-        print ""
-        print "  flip coin: flips a standard two-sided coin"
-        print ""
-        print "  Is this really random?"
-        print "    Test it out! Typing 'test 1d6' will show the results of many die rolls."
-        print "    You can do this with any positive integers (eg, 'test 2d20' or 'test 7d45')"
-        print "    You can also do 'test coin' to see if the coin tosses are fair."
-        print ""
+        print("")
+        print("Some available commands:\n")
+        print("")
+        print("  ndx: roll n dXs")
+        print("       example: 1d6 or 2d20")
+        print("       d6 rolls 1d6")
+        print("       n and x may have any postive integer value")
+        print("")
+        print("  xky: roll x and keep y")
+        print("       example: 5k3")
+        print("")
+        print("  flip coin: flips a standard two-sided coin")
+        print("")
+        print("  Is this really random?")
+        print("    Test it out! Typing 'test 1d6' will show the results of many die rolls.")
+        print("    You can do this with any positive integers (eg, 'test 2d20' or 'test 7d45')")
+        print("    You can also do 'test coin' to see if the coin tosses are fair.")
+        print("")
     elif (command=="hello") or (command=="hi"):
-        print "Hello, chum!"
+        print("Hello, chum!")
     elif (command=="flip coin") or (command=="toss coin") or (command=="coin flip") or (command=="coin toss") or (command=="coin") or (command=="flip"):
         flip_coin(1)
     elif (command=="clear") or (command=="cls") or (command=="clr") or (command=="clc") or (command=="c"):
         for i in range(0,100):
-            print ""
-        print "Type stuff down here, now!\n"
+            print("")
+        print("Type stuff down here, now!\n")
     elif (command=="test coin"):
         test_coin();
     elif (command[0:4]=="test"):
         splitarg = command.split(' ')
-        #print "test:         "+splitarg[0]
-        #print "die to test:  "+splitarg[1]
+        #print("test:         "+splitarg[0]
+        #print("die to test:  "+splitarg[1]
         if (len(splitarg) == 1):
             n = 1
             x = 6
-        else: 
+        else:
             splitarg = splitarg[1].split('d')
             if (splitarg[0] == ''):
                 n = 1
             else:
                 n = int(splitarg[0])
-            #print n
+            #print(n
             x = int(splitarg[1])
-            #print x
-        print "\nTesting "+repr(n)+"d"+repr(x)+"\n"
+            #print(x
+        print("\nTesting "+repr(n)+"d"+repr(x)+"\n")
         test_dice(x, n)
-        print ""
+        print("")
     elif (command[0:6]=="prompt"):
         splitarg = command.split(' ')
         nargs = len(splitarg)
@@ -196,19 +196,19 @@ while ( stop == 0 ):
             for i in range(1, nargs):
                 prompt += splitarg[i]+" "
     elif (command == "roll") or (command=="die"):
-        print "\nYou rolled a d6 and got a "+repr(roll(6, 1))+".\n"
+        print("\nYou rolled a d6 and got a " + repr(roll(6, 1)) + ".\n")
     elif (command[0:4]=="roll"):
         # if the user enters "roll " or "roll 3" or something:
         if (len(command)<=5):
-            print "\nYou rolled a d6 and got a "+repr(roll(6, 1))+".\n"
+            print("\nYou rolled a d6 and got a " + repr(roll(6, 1)) + ".\n")
         #splitarg = command.split(' ')
         # default case: no argument given (just "roll")
         elif (len(command)==6):
             n = int(command[5])
-            print "\nYou rolled "+repr(n)+"d6 and got a "+repr(roll(6, n))+".\n"
+            print("\nYou rolled " + repr(n) + "d6 and got a " + repr(roll(6, n)) + ".\n")
         elif (len(command)==7):
             n = int(command[5:7])
-            print "\nYou rolled "+repr(n)+"d6 and got a "+repr(roll(6, n))+".\n"
+            print("\nYou rolled " + repr(n) + "d6 and got a " + repr(roll(6, n)) + ".\n")
         else:
             splitarg = command.split(' ')
             splitarg = splitarg[1].split('d')
@@ -218,36 +218,36 @@ while ( stop == 0 ):
                 n = int(splitarg[0])
             x = int(splitarg[1])
             if (n == 1):
-                print "\nYou rolled a "+repr(roll(x, 1))+"."
+                print("\nYou rolled a " + repr(roll(x, 1)) + ".")
             else:
                 rolls  = range(0, n)
                 for i in range(0, n):
                     rolls[i] = roll(x, 1)
-                print ""
-                print bar
-                print ""
-                print "Rolls:  "+repr(rolls)
+                print("")
+                print(bar)
+                print("")
+                print("Rolls:  " + repr(rolls))
                 rolls = sorted(rolls, reverse=True)
-                print ""
-                print "Sorted: "+repr(rolls)
-                print ""
-                print "Sum: "+repr(sum(rolls))+"\n"
-                print bar
-            print ""
+                print("")
+                print("Sorted: " + repr(rolls))
+                print("")
+                print("Sum: " + repr(sum(rolls)) + "\n")
+                print(bar)
+            print("")
     elif (command[0:3]=="xky"):
         splitarg = command.split(' ')
         nargs = len(splitarg)
         if (nargs < 3):
-            print ""
-            print "Usage:    N1kN2     or     xky N1 N2"
-            print ""
-            print "Example:  5k3       or     xky 5 3"
-            print ""
+            print("")
+            print("Usage:    N1kN2     or     xky N1 N2")
+            print("")
+            print("Example:  5k3       or     xky 5 3")
+            print("")
         else:
             x = int(splitarg[1])
             y = int(splitarg[2])
             if (y>x):
-                print "\nError: y > x\n"
+                print("\nError: y > x\n")
             else:
                 xky(x, y)
     elif (command[0:4]=="draw") or (command[0:4]=="card"):
@@ -263,16 +263,16 @@ while ( stop == 0 ):
                 rollcommand = rollcommand.split('k')
                 n = len(rollcommand)
                 if (n != 2) or (rollcommand[0] == '') or (rollcommand[1] == ''):
-                    print ""
-                    print "Usage:    N1kN2     or     xky N1 N2"
-                    print ""
-                    print "Example:  5k3       or     xky 5 3"
-                    print ""
+                    print("")
+                    print("Usage:    N1kN2     or     xky N1 N2")
+                    print("")
+                    print("Example:  5k3       or     xky 5 3")
+                    print("")
                 else:
                     x = int(rollcommand[0])
                     y = int(rollcommand[1])
                     if (y>x):
-                        print "\nError: y > x\n"
+                        print("\nError: y > x\n")
                     else:
                         xky(x,y)
             elif 'd' in splitarg[0]:
@@ -280,11 +280,11 @@ while ( stop == 0 ):
                 rollcommand = rollcommand.split('d')
                 n = len(rollcommand)
                 if (n != 2):
-                    print ""
-                    print "Usage:    N1dN2     or     roll N1dN2"
-                    print ""
-                    print "Example:  2d20      or     roll 2d20"
-                    print ""
+                    print("")
+                    print("Usage:    N1dN2     or     roll N1dN2")
+                    print("")
+                    print("Example:  2d20      or     roll 2d20")
+                    print("")
                 else:
                     if (rollcommand[0] == ''):
                         n = 1
@@ -295,23 +295,23 @@ while ( stop == 0 ):
                     else:
                         x = int(rollcommand[1])
                     if (n == 1):
-                        print "\nYou rolled a "+repr(roll(x, 1))+"."
+                        print("\nYou rolled a " + repr(roll(x, 1)) + ".")
                     else:
                         rolls  = range(0, n)
                         for i in range(0, n):
                             rolls[i] = roll(x, 1)
-                        print ""
-                        print bar
-                        print ""
-                        print "Rolls:  "+repr(rolls)
+                        print("")
+                        print(bar)
+                        print("")
+                        print("Rolls:  " + repr(rolls))
                         rolls = sorted(rolls, reverse=True)
-                        print ""
-                        print "Sorted: "+repr(rolls)
-                        print ""
-                        print "Sum: "+repr(sum(rolls))
-                        print ""
-                        print bar
-                    print ""
+                        print("")
+                        print("Sorted: " + repr(rolls))
+                        print("")
+                        print("Sum: " + repr(sum(rolls)))
+                        print("")
+                        print(bar)
+                    print("")
     #
     # Ideas for future developments:
     #
@@ -320,4 +320,3 @@ while ( stop == 0 ):
     # why?
     # fortune?
     # random/random roll
-

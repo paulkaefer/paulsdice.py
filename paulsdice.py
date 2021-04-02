@@ -34,7 +34,7 @@ def roll(dice_size, number):
     return total
 
 def xky(x, y):
-    rolls = range(0,x)
+    rolls = list(range(0,x))
     for i in range(0,x):
         rolls[i] = 0
     for i in range(0,x):
@@ -102,7 +102,7 @@ def test_coin():
 def test_dice(value, number):
     roll_max = value*number
     roll_min = number*1
-    array  = range(0, roll_max+1)
+    array = list(range(0, roll_max+1))
     for i in range(0, roll_max+1):
         array[i] = 0
     roll=0
@@ -220,7 +220,7 @@ while ( stop == 0 ):
             if (n == 1):
                 print("\nYou rolled a " + repr(roll(x, 1)) + ".")
             else:
-                rolls  = range(0, n)
+                rolls = list(range(0, n))
                 for i in range(0, n):
                     rolls[i] = roll(x, 1)
                 print("")
@@ -297,7 +297,7 @@ while ( stop == 0 ):
                     if (n == 1):
                         print("\nYou rolled a " + repr(roll(x, 1)) + ".")
                     else:
-                        rolls  = range(0, n)
+                        rolls = list(range(0, n))
                         for i in range(0, n):
                             rolls[i] = roll(x, 1)
                         print("")
